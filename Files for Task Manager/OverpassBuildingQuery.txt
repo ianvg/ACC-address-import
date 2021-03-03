@@ -1,0 +1,14 @@
+[out:xml][timeout:300];
+            area(3601020709)->.county;
+            // gather results
+            (
+                node(area.county)[~"addr.*"~".*"];
+                (way(area.county)[~"addr.*"~".*"]; - way(area.county)["highway"~".*"];);
+                relation(area.county)[~"addr.*"~".*"];
+
+                node(area.county)[~".*building.*"~".*"];
+                way(area.county)[~".*building.*"~".*"];
+                relation(area.county)[~".*building.*"~".*"];
+            );
+            (._;>;);
+            out meta;
